@@ -10,23 +10,23 @@ function App() {
   const diceSum = useSelector(state => state.dice); 
   const dispatch = useDispatch(); 
 
-  const onRollDiceClick = () => {
-    console.log(diceSum.diceRolls);
-    dispatch(rollDice()); 
-  }
-
-  let index = diceSum.diceRolls.length -1 ; 
-
-  let currentNumber = diceSum.diceRolls[index];
-
-
     return (
+    
+    // requirement - one container
+
     <div className="App">
-      <button onClick = {() => onRollDiceClick()}> Roll Dice </button>
+      <button onClick = {() => dispatch(rollDice())}> Roll Dice </button>
       <button onClick = {() => dispatch(clearDice())}> Clear Dice </button>
+
+      {/* The state diceSum has two components - the current sum of the dice, and the diceRolls array that contains all the rolls of the dice.  */}
       <h2> Sum : {diceSum.sum} </h2>
-      {/* Sending the dice the last element in the diceRolls array i.e the most current number drawn.  */}
-      <Dice currentNumber = {currentNumber} />
+
+      {/*Using the map function to map the array of dice rolls into a Dice component */}
+      {/* Also used a random key to get rid of the key warning.  */}
+
+      {diceSum.diceRolls.map((e) => {
+        return <Dice currentNumber = {e}  key = { 100* Math.random() }/>
+      })}
     </div>
   );
 }

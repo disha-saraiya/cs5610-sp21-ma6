@@ -1,5 +1,4 @@
-
-
+// Requirement - atleast one reducer
 
 export default function DiceReducer(state = {
     sum: 0, 
@@ -27,25 +26,3 @@ export default function DiceReducer(state = {
     return state
 
 } 
-
-
-    // switch(action.type){
-    //     //If the dice is cleared then the list of states will reset and the sum will be reset.
-    //     case 'CLEAR_DICE': 
-    //         return  {
-    //             sum:0, 
-    //             diceRolls:[]
-    //         }; 
-
-    //     //If the dice will roll, then the sum and array of dice rolls gets updated with the new random number. 
-    //     case 'ROLL_DICE': 
-    //         return {
-    //             sum: sum + random, 
-    //             diceRolls: [...diceRolls, random]
-    //         }
-
-    //     default: 
-    //         return state; 
-    // }
-
-
